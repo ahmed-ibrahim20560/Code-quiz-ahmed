@@ -12,14 +12,14 @@ const feedbackEl = document.getElementById("feedback")
 
 let questions = [ 
   {
-    title: "First Question",
-    choices: "ChoiceA, ChoiceB, ChoiceC",
-    answer: "ChoiceB",
+    title: "What is 43 x 28?",
+    choices: "1204, 1424, 844, 1182",
+    answer: "1204",
   },
   {
-    title: "Second Question",
-    choices: "ChoiceA, ChoiceB, ChoiceC",
-    answer: "ChoiceB",
+    title: "Which of these animals is the heaviest on average?",
+    choices: "Elephant, Rhino, Sperm whale, salt-water crocodile",
+    answer: "Sperm whale",
   },
   {
     title: "third Question",
@@ -103,7 +103,7 @@ function selectAnswer(event) {
 
   questionIndex++ 
 
-  if (questionIndex ===questions.length) {
+  if (questionIndex === questions.length) {
     endQuiz()
   }
   else {
@@ -119,7 +119,7 @@ function endQuiz() {
   finalScore.textContent = timer
   }
 
-  
+
 
   
   startBtn.addEventListener("click" , startQuiz)
