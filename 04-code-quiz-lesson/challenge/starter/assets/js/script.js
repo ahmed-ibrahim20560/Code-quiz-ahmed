@@ -80,12 +80,46 @@ function getQuestions() {
   }
 }
 
+function selectAnswer(event) {
+  if (event.target.value !== questions[questionIndex].answer) {
+    timer -= 15
+
+    if (timer <= 0) {
+      timer = 0
+    }
+
+    timerEl.textContent = timer 
+    feedbackEl.textContent = "wrong answer!"
+  }
+
+  else {
+    feedbackEl.textContent = "correct answer!"
+  }
+
+  feedbackEl.setAttribute('class', 'feedback')
+  setTimeout(function() {
+    feedbackEl.setAttribute('class' , 'feedback hide')
+  }, 1000)
+
+  questionIndex++ 
+
+  if (questionIndex ===questions.length) {
+    endQuiz()
+  }
+  else {
+    getQuestions()
+  }
+}
 
 
 function endQuiz() {
   clearInterval(timerInterval)
   question.setAttribute("class", "hide")
   endScreen.removeAttribute("class")
+  finalScore.textContent = timer
   }
+
+  
+
   
   startBtn.addEventListener("click" , startQuiz)
