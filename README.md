@@ -5,3 +5,6 @@ I used variables to link to the html ID's as well as an object containing the qu
 
 ![picture of the first question in the quiz](<assets/images/Screen Shot 2024-01-02 at 22.41.16 pm.png>)
 
+https://ahmed-ibrahim20560.github.io/Code-quiz-ahmed/
+
+https://github.com/ahmed-ibrahim20560/Code-quiz-ahmed
