@@ -37,3 +37,21 @@ let questions = [
   }
 ]
 
+let timerInterval;
+let questionIndex = 0
+let timer = questions.length * 15
+
+function startQuiz() {
+  startScreen.setAttribute("class", "hide")
+  questions.removeAttribute("class")
+  timerInterval = setInterval(function() {
+   timer--
+   timerEl.textcontent = timer 
+
+   if (timer <= 0) {
+    endQuiz()
+  }
+  }, 1000)
+
+
+}
