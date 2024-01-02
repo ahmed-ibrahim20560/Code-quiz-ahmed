@@ -1,6 +1,7 @@
 let timerEl = document.getElementById("time")
-let startScreen = documen.getElementById("start-screen")
+let startScreen = document.getElementById("start-screen")
 const startBtn = document.getElementById("start")
+const question = document.getElementById("questions")
 const questionTitle = document.getElementById("question-title")
 const questionChoices = document.getElementById("choices")
 const endScreen = document.getElementById("end-screen")
@@ -16,22 +17,22 @@ let questions = [
     answer: "ChoiceB",
   },
   {
-    title: "First Question",
+    title: "Second Question",
     choices: "ChoiceA, ChoiceB, ChoiceC",
     answer: "ChoiceB",
   },
   {
-    title: "First Question",
+    title: "third Question",
     choices: "ChoiceA, ChoiceB, ChoiceC",
     answer: "ChoiceB",
   },
   {
-    title: "First Question",
+    title: "Fourth Question",
     choices: "ChoiceA, ChoiceB, ChoiceC",
     answer: "ChoiceB",
   },
   {
-    title: "First Question",
+    title: "Fifth Question",
     choices: "ChoiceA, ChoiceB, ChoiceC",
     answer: "ChoiceB",
   }
@@ -41,17 +42,50 @@ let timerInterval;
 let questionIndex = 0
 let timer = questions.length * 15
 
+
 function startQuiz() {
   startScreen.setAttribute("class", "hide")
-  questions.removeAttribute("class")
-  timerInterval = setInterval(function() {
-   timer--
-   timerEl.textcontent = timer 
+  question.removeAttribute("class")
 
-   if (timer <= 0) {
-    endQuiz()
-  }
+  timerInterval = setInterval(function() {
+    timer--
+    timerEl.textContent = timer
+
+    if (timer <= 0) {
+      endQuiz()
+    }
   }, 1000)
 
-
+  getQuestions()
 }
+
+
+function getQuestions() {
+  let currentQuestion = questions[questionIndex]
+
+  questionTitle.textContent = currentQuestion.title
+
+  let choices = currentQuestion.choices.split(", ")
+
+  questionChoices.innerHTML = ""
+
+  for (let i = 0; i < choices.length; i++) {
+    const choice = choices[i];
+    let choiceBtn = document.createElement("button")
+    choiceBtn.setAttribute('class', 'choices')
+    choiceBtn.setAttribute('value' , choice) 
+    choiceBtn.textContent = choice
+    choiceBtn.addEventListener('click' , selectAnswer)
+    questionChoices.appendChild(choiceBtn)
+  }
+}
+
+
+
+function endQuiz() {
+  clearInterval(timerInterval)
+  question.setAttribute("class", "hide")
+  endScreen.removeAttribute("class")
+  }
+  
+  startBtn.addEventListener("click" , startQuiz)
