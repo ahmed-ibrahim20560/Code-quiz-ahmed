@@ -15,9 +15,7 @@ if (playerHistory.length > 0) {
   }
 }
 
-function clearAll() {
-theScore.innerHTML = '';
-}
+
 
 function Clear() {
   localStorage.clear('highScores')
