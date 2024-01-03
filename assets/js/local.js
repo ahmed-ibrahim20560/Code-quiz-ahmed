@@ -1,4 +1,6 @@
 let theScore = document.getElementById('highscores')
+let theButton = document.getElementById('clear')
+
 
 let playerHistory = JSON.parse(localStorage.getItem('highScores')) || []
 
@@ -12,3 +14,15 @@ if (playerHistory.length > 0) {
     theScore.append(listEL)
   }
 }
+
+function clearAll() {
+theScore.innerHTML = '';
+}
+
+function Clear() {
+  localStorage.clear('highScores')
+}
+
+
+
+theButton.addEventListener('click', Clear)
