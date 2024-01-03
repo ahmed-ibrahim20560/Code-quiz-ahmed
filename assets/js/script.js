@@ -6,7 +6,7 @@ const questionTitle = document.getElementById("question-title")
 const questionChoices = document.getElementById("choices")
 const endScreen = document.getElementById("end-screen")
 const finalScore = document.getElementById("final-score")
-const initials = document.getElementById("initals")
+const initials = document.getElementById("initials")
 const submitBtn = document.getElementById("submit")
 const feedbackEl = document.getElementById("feedback") 
 
@@ -22,19 +22,19 @@ let questions = [
     answer: "Sperm whale",
   },
   {
-    title: "third Question",
-    choices: "ChoiceA, ChoiceB, ChoiceC",
-    answer: "ChoiceB",
+    title: "What is the difference between white and milk chocolate?",
+    choices: "Contains less cocoa, Has more cream, Has less sugar, Has less flour",
+    answer: "Contains less cocoa",
   },
   {
-    title: "Fourth Question",
-    choices: "ChoiceA, ChoiceB, ChoiceC",
-    answer: "ChoiceB",
+    title: "What is the estimated global population?",
+    choices: "10.3 Billion, 6.5 Billion, 8.1 Billion, 7.3 Billion",
+    answer: "8.1 Billion",
   },
   {
-    title: "Fifth Question",
-    choices: "ChoiceA, ChoiceB, ChoiceC",
-    answer: "ChoiceB",
+    title: "Who is the currnet prime minister of the UK",
+    choices: "Rishi Sunak, Boris Johnson, Suella Braverman, Priti Patel",
+    answer: "Rishi Sunak",
   }
 ]
 
@@ -119,7 +119,21 @@ function endQuiz() {
   finalScore.textContent = timer
   }
 
+  function savePlayer() {
+    let playerHistory = JSON.parse(localStorage.getItem('highScores')) || []
 
+    let Player = {
+      initials: initials.value, 
+      score: timer
+    }
+
+    playerHistory.push(Player)
+
+    localStorage.setItem('highScores', JSON.stringify(playerHistory))
+    document.location.replace("./highscores.html")
+  }
+
+submitBtn.addEventListener('click', savePlayer)
 
   
   startBtn.addEventListener("click" , startQuiz)
